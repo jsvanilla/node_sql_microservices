@@ -1,15 +1,19 @@
-const store = require('../../../store/dummy');
-
 const TABLA = 'user';
 
-function list(){
-  return store.list(TABLA);
+
+
+module.exports = function (injectedStore) {
+  let store = injectedStore;
+  if (!store) {
+    store = require('../../../store/dummy');
+  }
+  function list() {
+    return store.list(TABLA);
+  }
+
+  return {
+    list,
+
+  };
 }
-
-module.exports = {
-  list,
-
-};
-
-
-// me quede en el video 4
+// video 5   4:20
